@@ -4,15 +4,16 @@
   "description": "",
   "scripts": {
     "compile": "hardhat compile",
-    "test": "hardhat test ./test/unit/*.spec.ts --network hardhat",
+    "test": "NODE_OPTIONS=--openssl-legacy-provider hardhat test",
     "test-staging": "hardhat test ./test/staging/*.spec.ts --network rinkeby",
     "lintSol": "solhint 'contracts/*.sol'",
     "lintSol:fix": "solhint 'contracts/**/*.sol' --fix",
     "lintTS": "eslint . --ext .ts",
     "lintTS:fix": "",
     "format": "prettier --write .",
-    "coverage": "hardhat coverage --solcoverjs ./.solcover.js",
-    "fuzzing": "docker run -it --rm -v $PWD:/src trailofbits/eth-security-toolbox"
+    "coverage": "NODE_OPTIONS=--openssl-legacy-provider hardhat coverage --solcoverjs ./.solcover.js",
+    "fuzzing": "docker run -it --rm -v $PWD:/src trailofbits/eth-security-toolbox",
+    "hh": "hardhat"
   },
   "license": "MIT",
   "devDependencies": {
@@ -47,6 +48,7 @@
     "@chainlink/contracts": "^0.4.0",
     "@chainlink/test-helpers": "^0.0.7-alpha",
     "@chainlink/token": "^1.1.0",
+    "@openzeppelin/contracts": "^4.7.3",
     "babel-eslint": "^10.1.0",
     "dotenv": "^10.0.0"
   },
